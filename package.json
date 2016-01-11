@@ -1,0 +1,21 @@
+{
+  "name": "posthtml-loader",
+  "version": "0.0.1",
+  "engine": "node >= 4",
+  "main": "index.js",
+  "dependencies": {
+    "loader-utils": "^0.2.12",
+    "posthtml": "^0.8.1"
+  },
+  "devDependencies": {},
+  "description": "posthtml loader for webpack",
+  "repository": {
+    "type": "git",
+    "url": "http:/github.com/postness/posthtml-loader"
+  },
+  "author": {
+    "name": "Michael Ciniawky",
+    "email": "michael.ciniawsky@gmail.com"
+  },
+  "license": "MIT"
+}

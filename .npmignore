@@ -1,0 +1,5 @@
+test/
+node_modules/
+
+.editorconfig
+npm-debug.log
