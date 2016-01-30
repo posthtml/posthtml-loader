@@ -4,19 +4,19 @@
 
 'use strict'
 
-let posthtml = require('posthtml')
-let loaderUtils = require('loader-utils')
+var fs = require('fs')
+var path = require('path')
+var utils = require('loader-utils')
+
+var posthtml = require('posthtml')
 
 module.exports = function (source) {
   if (this.cacheable) return this.cacheable()
-
   var loader = this
-  var callback = this.async();
-
-  // var file = loaderUtils.getRemainingRequest(this);
-  var params = loaderUtils.parseQuery(this.query);
-
-  var plugins = this.options.posthtml
+  var callback = this.async()
+  // var file = utils.getRemainingRequest(this);
+  var params = utils.parseQuery(this.query)
+  var plugins = this.options.posthtml || []
 
   if (typeof plugins === 'function') {
     plugins = plugins.call(this, this)
@@ -25,7 +25,7 @@ module.exports = function (source) {
   if (typeof plugins === 'undefined') {
     plugins = []
   } else if (params.pack) {
-    plugins = plugins[params.pack]
+    plugins = plugins[params.plugins]
   } else if (!Array.isArray(plugins)) {
     plugins = plugins.defaults
   }
@@ -37,5 +37,8 @@ module.exports = function (source) {
         loader.emitWarning(msg.toString())
       })
       callback(null, result.html)
+      fs.writeFile(path.join(process.cwd(), result.html), () => {
+        console.log('File written!')
+      })
     })
 }
