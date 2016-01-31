@@ -4,41 +4,43 @@
 
 'use strict'
 
-var fs = require('fs')
-var path = require('path')
-var utils = require('loader-utils')
+let loaderUtils = require('loader-utils')
 
-var posthtml = require('posthtml')
+let path = require('path')
+let posthtml = require('posthtml')
 
 module.exports = function (source) {
-  if (this.cacheable) return this.cacheable()
+  this.cacheable && this.cacheable()
+
   var loader = this
-  var callback = this.async()
-  // var file = utils.getRemainingRequest(this);
-  var params = utils.parseQuery(this.query)
-  var plugins = this.options.posthtml || []
+  var options = loaderUtils.parseQuery(this.query)
+  var plugins = this.options.posthtml
 
   if (typeof plugins === 'function') {
     plugins = plugins.call(this, this)
   }
-
+  if (options.pack) {
+    plugins = plugins[options.pack]
+  }
   if (typeof plugins === 'undefined') {
     plugins = []
-  } else if (params.pack) {
-    plugins = plugins[params.plugins]
-  } else if (!Array.isArray(plugins)) {
-    plugins = plugins.defaults
   }
 
+  var file = loaderUtils.getRemainingRequest(this)
+  var filename = path.basename(file)
+
   posthtml(plugins)
-    .process(source)
+    .process(source.toString())
     .then((result) => {
-      result.warnings().forEach(function (msg) {
-        loader.emitWarning(msg.toString())
-      })
-      callback(null, result.html)
-      fs.writeFile(path.join(process.cwd(), result.html), () => {
-        console.log('File written!')
-      })
+      console.log(result.html)
+      this.callback(null, result.html)
+    })
+    .catch((error) => {
+      if (error.name === 'HTML Syntax Error') {
+        loader.emitError(error.message + error.showSourceCode())
+        this.callback()
+      } else {
+        this.callback(error)
+      }
     })
 }
