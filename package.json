@@ -1,13 +1,19 @@
 {
   "name": "posthtml-loader",
-  "version": "0.0.2",
-  "engine": "node >= 4",
+  "version": "0.0.4",
+  "engine": ">=4",
   "main": "index.js",
   "dependencies": {
     "loader-utils": "^0.2.12",
-    "posthtml": "^0.8.1"
+    "posthtml": "^0.8.2"
   },
-  "description": "posthtml loader for webpack",
+  "description": "PostHTML loader for Webpack",
+  "keywords": [
+    "HTML",
+    "PostHTML",
+    "Wepack",
+    "Loader"
+  ],
   "repository": {
     "type": "git",
     "url": "http:/github.com/michael-ciniawsky/posthtml-loader"

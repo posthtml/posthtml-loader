@@ -6,15 +6,13 @@
 
 let loaderUtils = require('loader-utils')
 
-let path = require('path')
 let posthtml = require('posthtml')
 
 module.exports = function (source) {
-  this.cacheable && this.cacheable()
+  if (this.cacheable) this.cacheable()
 
   var loader = this
-  var options = loaderUtils.parseQuery(this.query)
-  var plugins = this.options.posthtml
+  var plugins = this.options.posthtml || []
 
   if (typeof plugins === 'function') {
     plugins = plugins.call(this, this)
@@ -27,7 +25,10 @@ module.exports = function (source) {
   }
 
   var file = loaderUtils.getRemainingRequest(this)
-  var filename = path.basename(file)
+  var options = loaderUtils.parseQuery(this.query)
+
+  console.log(file)
+  console.log(options)
 
   posthtml(plugins)
     .process(source.toString())
