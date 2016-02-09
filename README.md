@@ -80,11 +80,11 @@ with [dom-loader](https://github.com/Wizcorp/dom-loader)
 { test: /\.html$/, loader: 'dom!html!posthtml' }
 ```
 
-with [svg-loader](https://github.com/Wizcorp/dom-loader)
+with [svg-loader](https://github.com/dolbyzerr/svg-loader)
 
 ```javascript
 
-{ test: /\.html$/, loader: 'svg!posthtml' }
+{ test: /\.svg$/, loader: 'svg!posthtml' }
 ```
 
 with [extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
