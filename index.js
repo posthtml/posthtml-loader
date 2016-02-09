@@ -20,7 +20,7 @@ module.exports = function (source) {
   if (options.pack) {
     plugins = plugins[options.pack]
   }
-  if (typeof plugins === 'undefined') {
+  if (typeof plugins === 'undefined' || typeof plugins === 'object') {
     plugins = []
   }
 
