@@ -87,7 +87,15 @@ with [svg-loader](https://github.com/dolbyzerr/svg-loader)
 { test: /\.svg$/, loader: 'svg!posthtml' }
 ```
 
-with [extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
+with [xml-loader](https://github.com/gisikw/xml-loader)
+
+```javascript
+
+{ test: /\.xml$/, loader: 'xml!posthtml' }
+```
+
+### Template
+[extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
 
 ```javascript
 
