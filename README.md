@@ -58,13 +58,41 @@ module.exports = {
 }
 ```
 
-### Examples
+### Template
+[extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
+
+````javascript
+
+var ExtractText = require('extract-text-webpack-plugin')
+
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.html$/,
+        loader: ExtractText.extract('html!posthtml')
+      }
+    ]
+  },
+
+  posthtml: function () {
+    return {
+      defaults: [ PostHTML Plugins ]
+    }
+  },
+
+  plugins: [
+    new ExtractText('output.html')
+  ]
+}
+
+### Integration
 with [jade-html-loader](https://github.com/bline/jade-html-loader)
 
 ```javascript
 
 { test: /\.jade$/, loader: 'html!posthtml!jade-html' }
-```
+````
 
 with [handlebars-loader](https://github.com/altano/handlebars-loader)
 
@@ -92,33 +120,4 @@ with [xml-loader](https://github.com/gisikw/xml-loader)
 ```javascript
 
 { test: /\.xml$/, loader: 'xml!posthtml' }
-```
-
-### Template
-[extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
-
-```javascript
-
-var ExtractText = require('extract-text-webpack-plugin')
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: ExtractText.extract('html!posthtml')
-      }
-    ]
-  },
-
-  posthtml: function () {
-    return {
-      defaults: [ PostHTML Plugins ]
-    }
-  },
-
-  plugins: [
-    new ExtractText('output.html')
-  ]
-}
 ```
