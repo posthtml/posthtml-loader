@@ -61,7 +61,7 @@ module.exports = {
 ### Template
 [extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
 
-````javascript
+```javascript
 
 var ExtractText = require('extract-text-webpack-plugin')
 
@@ -85,6 +85,7 @@ module.exports = {
     new ExtractText('output.html')
   ]
 }
+```
 
 ### Integration
 with [jade-html-loader](https://github.com/bline/jade-html-loader)
@@ -92,7 +93,7 @@ with [jade-html-loader](https://github.com/bline/jade-html-loader)
 ```javascript
 
 { test: /\.jade$/, loader: 'html!posthtml!jade-html' }
-````
+```
 
 with [handlebars-loader](https://github.com/altano/handlebars-loader)
 
