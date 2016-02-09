@@ -1,6 +1,6 @@
 {
   "name": "posthtml-loader",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "engine": ">=4",
   "main": "index.js",
   "dependencies": {

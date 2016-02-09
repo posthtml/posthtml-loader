@@ -82,7 +82,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractText('output.html')
+    new ExtractText('file.html')
   ]
 }
 ```
@@ -102,7 +102,7 @@ with [handlebars-loader](https://github.com/altano/handlebars-loader)
 { test: /\.hbs$/, loader: 'handlebars!html!posthtml' }
 ```
 
-with [file-loader](https://github.com/webpack/file-loader) and [val-loader](https://github.com/webpack/val-loader)
+with [file-loader](https://github.com/webpack/file-loader) && [val-loader](https://github.com/webpack/val-loader)
 
 ```javascript
 
