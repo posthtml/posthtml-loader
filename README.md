@@ -63,44 +63,28 @@ with [jade-html-loader](https://github.com/bline/jade-html-loader)
 
 ```javascript
 
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml!jade-html'
-      }
-    ]
-  },
+{ test: /\.jade$/, loader: 'html!posthtml!jade-html' }
+```
 
-  posthtml: function () {
-    return {
-      defaults: [ PostHTML Plugins ]
-    }
-  }
-}
+with [handlebars-loader](https://github.com/altano/handlebars-loader)
+
+```javascript
+
+{ test: /\.hbs$/, loader: 'handlebars!html!posthtml' }
 ```
 
 with [dom-loader](https://github.com/Wizcorp/dom-loader)
 
 ```javascript
 
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'dom!html!posthtml'
-      }
-    ]
-  },
+{ test: /\.html$/, loader: 'dom!html!posthtml' }
+```
 
-  posthtml: function () {
-    return {
-      defaults: [ PostHTML Plugins ]
-    }
-  }
-}
+with [svg-loader](https://github.com/Wizcorp/dom-loader)
+
+```javascript
+
+{ test: /\.html$/, loader: 'svg!posthtml' }
 ```
 
 with [extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)

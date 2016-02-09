@@ -21,20 +21,15 @@ module.exports = function (source) {
     plugins = plugins[options.pack]
   }
   if (typeof plugins === 'undefined' || typeof plugins === 'object') {
-    plugins = []
+    plugins = plugins.defaults || []
   }
 
   var loader = this
   var callback = this.async()
 
-  console.log(options)
-
   posthtml(plugins)
     .process(source.toString())
-    .then((result) => {
-      console.log(result.html)
-      callback(null, result.html)
-    })
+    .then(result => callback(null, result.html))
     .catch((error) => {
       if (error.name === 'HTML Syntax Error') {
         loader.emitError(error.message + error.showSourceCode())
