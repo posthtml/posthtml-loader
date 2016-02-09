@@ -11,12 +11,6 @@ let posthtml = require('posthtml')
 module.exports = function (source) {
   if (this.cacheable) this.cacheable()
 
-  var loader = this
-  var callback = this.async()
-
-  console.log(options)
-  console.log(callback)
-
   var plugins = this.options.posthtml || []
   var options = loaderUtils.parseQuery(this.query)
 
@@ -30,9 +24,9 @@ module.exports = function (source) {
     plugins = []
   }
 
-  var file = loaderUtils.getRemainingRequest(this)
+  var loader = this
+  var callback = this.async()
 
-  console.log(file)
   console.log(options)
 
   posthtml(plugins)
