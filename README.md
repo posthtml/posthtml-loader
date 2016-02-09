@@ -102,6 +102,13 @@ with [handlebars-loader](https://github.com/altano/handlebars-loader)
 { test: /\.hbs$/, loader: 'handlebars!html!posthtml' }
 ```
 
+with [file-loader](https://github.com/webpack/file-loader) and [val-loader](https://github.com/webpack/val-loader)
+
+```javascript
+
+{ test: /\.html$/, loader: 'file?name=[name].[ext]!val!html!posthtml' }
+```
+
 with [dom-loader](https://github.com/Wizcorp/dom-loader)
 
 ```javascript
