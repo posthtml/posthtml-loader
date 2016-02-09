@@ -9,7 +9,7 @@ Webpack loader for [PostHTML](https://github.com/posthtml/posthtml)
 ```
 
 ## Usage
-# Inline
+### Inline
 
 ```javascript
 // file.js
@@ -17,7 +17,7 @@ Webpack loader for [PostHTML](https://github.com/posthtml/posthtml)
 var html = require('html!posthtml!./file.html')
 ```
 
-# Config
+### Config
 
 ```javascript
 // webpack.config.js || webpackfile.js
@@ -26,15 +26,41 @@ module: {
   loaders: [
     {
       test: /\.html$/,
-      loader: 'html!posthtml?pack=default'
+      loader: 'html!posthtml'
     },
   ]
-}
+},
 
 posthtml: function () {
   return {
-    default: [ PostHTML Plugins ]
-    // Add Plugin Collections  
+    defaults: [ PostHTML Plugins ]
+    // Add Plugin Packs
   }
+}
+```
+
+### Options
+
+```javascript
+
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.includes\.html$/,
+        loader: 'html!posthtml?pack=includes'
+      },
+      {
+        test:   /\.html$/,
+        loader: 'html!posthtml'
+      }
+    ]
+  },
+
+  posthtml: function () {
+    return {
+      defaults: [PostHTML Plugins],
+      includes:  [PostHTML Plugins]
+    }
 }
 ```

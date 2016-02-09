@@ -12,7 +12,13 @@ module.exports = function (source) {
   if (this.cacheable) this.cacheable()
 
   var loader = this
+  var callback = this.async()
+
+  console.log(options)
+  console.log(callback)
+
   var plugins = this.options.posthtml || []
+  var options = loaderUtils.parseQuery(this.query)
 
   if (typeof plugins === 'function') {
     plugins = plugins.call(this, this)
@@ -25,7 +31,6 @@ module.exports = function (source) {
   }
 
   var file = loaderUtils.getRemainingRequest(this)
-  var options = loaderUtils.parseQuery(this.query)
 
   console.log(file)
   console.log(options)
@@ -34,14 +39,14 @@ module.exports = function (source) {
     .process(source.toString())
     .then((result) => {
       console.log(result.html)
-      this.callback(null, result.html)
+      callback(null, result.html)
     })
     .catch((error) => {
       if (error.name === 'HTML Syntax Error') {
         loader.emitError(error.message + error.showSourceCode())
-        this.callback()
+        callback()
       } else {
-        this.callback(error)
+        callback(error)
       }
     })
 }
