@@ -1,15 +1,16 @@
-# PostHTML Loader
-Webpack loader for [PostHTML](https://github.com/posthtml/posthtml)
+![[Wepack]]() <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-## Install
+# PostHTML Loader Webpack loader for [PostHTML](https://github.com/posthtml/posthtml)
+# Install
+[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) [dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)
 
 ```bash
 
 (sudo) npm i -D posthtml-loader
 ```
 
-## Usage
-### Setup
+# Usage
+## Setup
 
 ```javascript
 // webpack.config.js
@@ -31,7 +32,7 @@ posthtml: function () {
 }
 ```
 
-### Options
+## Options
 
 ```javascript
 
@@ -59,7 +60,7 @@ module.exports = {
 }
 ```
 
-### Extract
+## Extract
 [extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
 
 ```javascript
@@ -88,22 +89,14 @@ module.exports = {
 }
 ```
 
-## Integration
-### Templates
-#### EJS
+# Integration
+## Templates
+### EJS
 [ejs-html-loader](https://github.com/bline/jade-html-loader)
 
 ```javascript
 
 { test: /\.ejs$/, loader: 'html!posthtml!ejs-html' }
-```
-
-#### HBS
-[handlebars-loader](https://github.com/altano/handlebars-loader)
-
-```javascript
-
-{ test: /\.hbs$/, loader: 'html!posthtml!handlebars-template' }
 ```
 
 #### Jade
@@ -114,32 +107,32 @@ module.exports = {
 { test: /\.jade$/, loader: 'html!posthtml!jade-html' }
 ```
 
-#### Templates supported by [consolidate](https://github.com/tj/consolidate.js)
+### Templates supported by [consolidate](https://github.com/tj/consolidate.js)
 [template-html-loader](https://github.com/bline/jade-html-loader)
 
 ```javascript
 
-{ test: /\.hogan$/, loader: 'html!posthtml!template-html?engine=hogan' }
+{ test: /\.hbs$/, loader: 'html!posthtml!template-html?engine=handlebars' }
 ```
 
-### String
-#### HTML
+## String
+### HTML
 [html-loader](https://github.com/webpack/html-loader)
 
 ```javascript
 
-{ test: /\.xml$/, loader: 'html!posthtml' }
+{ test: /\.html$/, loader: 'html!posthtml' }
 ```
 
-#### SVG
+### SVG
 [svg-loader](https://github.com/dolbyzerr/svg-loader)
 
 ```javascript
 
-{ test: /\.xml$/, loader: 'svg!posthtml' }
+{ test: /\.svg$/, loader: 'svg!posthtml' }
 ```
 
-#### XML
+### XML
 [xml-loader](https://github.com/gisikw/xml-loader)
 
 ```javascript
@@ -147,10 +140,10 @@ module.exports = {
 { test: /\.xml$/, loader: 'xml!posthtml' }
 ```
 
-### File
+## File
 [file-loader](https://github.com/webpack/file-loader) && [val-loader](https://github.com/webpack/val-loader)
 
-#### HTML
+### HTML
 [html-loader](https://github.com/webpack/html-loader)
 
 ```javascript
@@ -158,7 +151,7 @@ module.exports = {
 { test: /\.html$/, loader: 'file?name=[name].[ext]!val!html!posthtml' }
 ```
 
-#### SVG
+### SVG
 [svg-loader](https://github.com/dolbyzerr/svg-loader)
 
 ```javascript
@@ -166,10 +159,10 @@ module.exports = {
 { test: /\.svg$/, loader: 'file?name=[name].[ext]!val!svg!posthtml' }
 ```
 
-### DOM
+## DOM
 [dom-loader](https://github.com/Wizcorp/dom-loader)
 
-#### HTML
+### HTML
 [html-loader](https://github.com/webpack/html-loader)
 
 ```javascript
@@ -177,7 +170,7 @@ module.exports = {
 { test: /\.html$/, loader: 'dom!html!posthtml' }
 ```
 
-#### SVG
+### SVG
 [svg-loader](https://github.com/dolbyzerr/svg-loader)
 
 ```javascript
