@@ -8,7 +8,7 @@
 (sudo) npm i -D posthtml-loader
 ```
 
-[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) ![dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)
+[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) [![dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)](https://david-dm.org/michael-ciniawsky/posthtml-loader)
 
 # Usage
 ## Setup
