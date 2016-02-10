@@ -1,8 +1,8 @@
-![[Wepack]]() <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+[![webpack](https://webpack.github.io/assets/logo.png)](https://webpack.github.io) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-# PostHTML Loader Webpack loader for [PostHTML](https://github.com/posthtml/posthtml)
+# Wepack loader for [PostHTML](https://github.com/posthtml/posthtml)
 # Install
-[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) [dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)
+[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) ![dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)
 
 ```bash
 
