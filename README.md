@@ -1,21 +1,31 @@
-[![webpack](https://webpack.github.io/assets/logo.png)](https://webpack.github.io) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+[![NPM][npm]][npm-url]
+[![Node][node]][node-url]
+[![Dependencies][deps]][deps-url]
+[![DevDependencies][devdeps]][devdeps-url]
+[![Code Style][style]][style-url]
+[![License MIT][license]][license-url]
+
+[![webpack][webpack]](https://webpack.github.io) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
 # Loader for [PostHTML](https://github.com/posthtml/posthtml)
+
+| Branch               | Build                     | Coverage                 |
+|:--------------------:|:-------------------------:|:------------------------:|
+|  Master              | ![travis]                 | ![cover]                 |
+|  Develop             | ![travis-dev]             | ![cover-dev]             |
+|  Release v1.0.0       | ![travis-rel-1.0.0]       | ![cover-rel-1.0.0]       |
+
 # Install
 
 ```bash
-
-(sudo) npm i -D posthtml-loader
+(sudo) npm i -D html-loader posthtml-loader
 ```
-
-[![npm](https://badge.fury.io/js/posthtml-loader.svg)](https://badge.fury.io/js/posthtml-loader) [![dependencies](https://david-dm.org/michael-ciniawsky/posthtml-loader.svg)](https://david-dm.org/michael-ciniawsky/posthtml-loader)
 
 # Usage
 ## Setup
 
-```javascript
+```js
 // webpack.config.js
-
 module: {
   loaders: [
     {
@@ -25,156 +35,170 @@ module: {
   ]
 },
 
-posthtml: function () {
+posthtml: () => {
   return {
-    defaults: [ PostHTML Plugins ]
-    // Add our own Plugin Packs
+    defaults: [ /* PostHTML Plugins */ ]
   }
 }
 ```
 
 ## Options
 
-```javascript
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: 'html!posthtml?pack=html'
-      }
-      {
-        test: /\.svg$/,
-        loader: 'svg!posthtml?pack=svg'
-      }
-    ]
-  },
-
-  posthtml: function () {
-    return {
-      defaults: [],
-      html: [ PostHTML Plugins ],
-      svg: [ PostHTML Plugins ]
+```js
+// webpack.config.js
+module: {
+  loaders: [
+    {
+      test: /\.html$/,
+      loader: 'html!posthtml?pack=html'
     }
+  ]
+},
+
+posthtml: () => {
+  return {
+    defaults: [],
+    html: [ /* PostHTML Plugins */ ],
   }
 }
 ```
 
-## Extract
-[extract-text-plugin](https://github.com/webpack/extract-text-webpack-plugin)
+## [Extract Text][extract-text-plugin]
 
-```javascript
+```js
+// webpack.config.js
+const ExtractText = require('extract-text-webpack-plugin')
 
-var ExtractText = require('extract-text-webpack-plugin')
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.html$/,
-        loader: ExtractText.extract('html!posthtml')
-      }
-    ]
-  },
-
-  posthtml: function () {
-    return {
-      defaults: [ PostHTML Plugins ]
+module: {
+  loaders: [
+    {
+      test: /\.html$/,
+      loader: ExtractText.extract('html!posthtml')
     }
-  },
-
-  plugins: [
-    new ExtractText('file.html')
   ]
-}
+},
+
+posthtml: () => {
+  return {
+    defaults: [ /* PostHTML Plugins */ ]
+  }
+},
+
+plugins: [
+  new ExtractText('[name].html')
+]
 ```
 
 # Integration
-## Templates
-### EJS
-[ejs-html-loader](https://github.com/bline/jade-html-loader)
+## [Template][template-html-loader] Loader
 
 ```javascript
-
-{ test: /\.ejs$/, loader: 'html!posthtml!ejs-html' }
-```
-
-#### Jade
-[jade-html-loader](https://github.com/bline/jade-html-loader)
-
-```javascript
-
-{ test: /\.jade$/, loader: 'html!posthtml!jade-html' }
-```
-
-### Templates supported by [consolidate](https://github.com/tj/consolidate.js)
-[template-html-loader](https://github.com/bline/jade-html-loader)
-
-```javascript
-
-{ test: /\.hbs$/, loader: 'html!posthtml!template-html?engine=handlebars' }
+{
+  test: /\.hbs$/,
+  loader: 'html!posthtml!template-html?engine=handlebars'
+}
 ```
 
 ## String
-### HTML
-[html-loader](https://github.com/webpack/html-loader)
+### [HTML][html-loader]
 
-```javascript
-
-{ test: /\.html$/, loader: 'html!posthtml' }
+```js
+{
+  test: /\.html$/,
+  loader: 'html!posthtml'
+}
 ```
 
-### SVG
-[svg-loader](https://github.com/dolbyzerr/svg-loader)
+### [SVG][svg-loader]
 
-```javascript
-
-{ test: /\.svg$/, loader: 'svg!posthtml' }
+```js
+{
+  test: /\.svg$/,
+  loader: 'svg!posthtml'
+}
 ```
 
-### XML
-[xml-loader](https://github.com/gisikw/xml-loader)
+## [File][file-loader] && [Val][val-loader] Loader
+### [HTML][html-loader]
 
-```javascript
-
-{ test: /\.xml$/, loader: 'xml!posthtml' }
+```js
+{
+  test: /\.html$/,
+  loader: 'file?name=[name].[ext]!val!html!posthtml'
+}
 ```
 
-## File
-[file-loader](https://github.com/webpack/file-loader) && [val-loader](https://github.com/webpack/val-loader)
+### [SVG][svg-loader]
 
-### HTML
-[html-loader](https://github.com/webpack/html-loader)
-
-```javascript
-
-{ test: /\.html$/, loader: 'file?name=[name].[ext]!val!html!posthtml' }
+```js
+{
+  test: /\.svg$/,
+  loader: 'file?name=[name].[ext]!val!svg!posthtml'
+}
 ```
 
-### SVG
-[svg-loader](https://github.com/dolbyzerr/svg-loader)
+## [DOM](https://github.com/Wizcorp/dom-loader) Loader
+### [HTML][html-loader]
 
-```javascript
+```js
 
-{ test: /\.svg$/, loader: 'file?name=[name].[ext]!val!svg!posthtml' }
+{
+  test: /\.html$/,
+  loader: 'dom!html!posthtml'
+}
 ```
 
-## DOM
-[dom-loader](https://github.com/Wizcorp/dom-loader)
+### [SVG][svg-loader]
 
-### HTML
-[html-loader](https://github.com/webpack/html-loader)
-
-```javascript
-
-{ test: /\.html$/, loader: 'dom!html!posthtml' }
+```js
+{
+  test: /\.svg$/,
+  loader: 'dom!svg!posthtml'
+}
 ```
 
-### SVG
-[svg-loader](https://github.com/dolbyzerr/svg-loader)
+[webpack]: https://webpack.github.io/assets/logo.png
+[extract-text-plugin]: https://github.com/webpack/extract-text-webpack-plugin
 
-```javascript
+[val-loader]: https://github.com/webpack/val-loader
+[dom-loader]: https://github.com/Wizcorp/dom-loader
+[svg-loader]: https://github.com/dolbyzerr/svg-loader
+[file-loader]: https://github.com/webpack/file-loader
+[html-loader]: https://github.com/webpack/html-loader
+[template-html-loader]: https://github.com/bline/jade-html-loader
 
-{ test: /\.svg$/, loader: 'dom!svg!posthtml' }
-```
+[npm]: https://img.shields.io/npm/v/posthtml-loader.svg
+[npm-url]: https://npmjs.com/package/posthtml-loader
+
+[node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
+[node-url]: https://nodejs.org
+
+[deps]: https://david-dm.org/michael-ciniawsky/posthtml-loader.svg
+[deps-url]: https://david-dm.org/michael-ciniawsky/posthtml-loader
+
+[devdeps]: https://david-dm.org/michael-ciniawsky/posthtml-loader/dev-status.svg
+[devdeps-url]: https://david-dm.org/michael-ciniawsky/posthtml-loader#info=devDependencies
+
+[style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
+[style-url]: http://standardjs.com/
+
+[travis]: http://img.shields.io/travis/michael-ciniawsky/posthtml-loader.svg
+[travis-url]: https://travis-ci.org/michael-ciniawsky/posthtml-loader
+
+[travis-dev]: http://img.shields.io/travis/michael-ciniawsky/posthtml-loader.svg?branch=develop
+[travis-dev-url]: https://travis-ci.org/michael-ciniawsky/posthtml-loader?branch=develop
+
+[travis-rel-1.0.0]: https://travis-ci.org/michael-ciniawsky/posthtml-loader.svg?branch=release/1.0.0
+[travis-rel-1.0.0-url]:https://travis-ci.org/michael-ciniawsky/posthtml-loader?branch=release/1.0.0
+
+[cover]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=master
+[cover-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=master
+
+[cover-dev]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=develop
+[cover-dev-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=develop
+
+[cover-rel-1.0.0]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=release/1.0.0
+[cover-rel-1.0.0-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=release/1.0.0
+
+[license]: https://img.shields.io/github/license/michael-ciniawsky/posthtml-loader.svg
+[license-url]: https://raw.githubusercontent.com/michael-ciniawsky/posthtml-loader/master/LICENSE
