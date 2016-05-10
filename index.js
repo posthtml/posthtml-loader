@@ -32,8 +32,10 @@ module.exports = function (source) {
 
   posthtml(plugins)
     .process(source.toString())
-    .then(result => callback(null, result.html))
-    .catch((error) => {
+    .then(function (result) {
+      callback(null, result.html)
+    })
+    .catch(function (error) {
       if (error.name === 'Error: PostHTML Loader') {
         loader.emitError(error.message + error.showSourceCode())
         callback()
