@@ -1,5 +1,4 @@
 [![NPM][npm]][npm-url]
-[![Node][node]][node-url]
 [![Dependencies][deps]][deps-url]
 [![DevDependencies][devdeps]][devdeps-url]
 [![Code Style][style]][style-url]
@@ -169,9 +168,6 @@ plugins: [
 
 [npm]: https://img.shields.io/npm/v/posthtml-loader.svg
 [npm-url]: https://npmjs.com/package/posthtml-loader
-
-[node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
-[node-url]: https://nodejs.org
 
 [deps]: https://david-dm.org/posthtml/posthtml-loader.svg
 [deps-url]: https://david-dm.org/posthtml/posthtml-loader
