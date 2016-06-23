@@ -2,6 +2,7 @@
 ### Added 
 - Added files property in package.json
 - Added first simple test
+- Added travis config
 
 ### Change
 - Update .gitignore
