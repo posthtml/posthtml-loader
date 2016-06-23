@@ -8,3 +8,4 @@
 - Update path in package.json to posthtml
 - Change #2, #3, Downgrade to ES5
 - Update devDep
+- Update repo path in readme
