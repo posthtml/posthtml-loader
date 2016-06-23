@@ -13,7 +13,7 @@
 |:--------------------:|:-------------------------:|:------------------------:|
 |  Master              | ![travis]                 | ![cover]                 |
 |  Develop             | ![travis-dev]             | ![cover-dev]             |
-|  Release v1.0.0       | ![travis-rel-1.0.0]       | ![cover-rel-1.0.0]       |
+|  Release v1.0.0      | ![travis-rel-1.0.0]       | ![cover-rel-1.0.0]       |
 
 # Install
 
@@ -173,32 +173,32 @@ plugins: [
 [node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
 [node-url]: https://nodejs.org
 
-[deps]: https://david-dm.org/michael-ciniawsky/posthtml-loader.svg
-[deps-url]: https://david-dm.org/michael-ciniawsky/posthtml-loader
+[deps]: https://david-dm.org/posthtml/posthtml-loader.svg
+[deps-url]: https://david-dm.org/posthtml/posthtml-loader
 
-[devdeps]: https://david-dm.org/michael-ciniawsky/posthtml-loader/dev-status.svg
-[devdeps-url]: https://david-dm.org/michael-ciniawsky/posthtml-loader#info=devDependencies
+[devdeps]: https://david-dm.org/posthtml/posthtml-loader/dev-status.svg
+[devdeps-url]: https://david-dm.org/posthtml/posthtml-loader#info=devDependencies
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
 
-[travis]: http://img.shields.io/travis/michael-ciniawsky/posthtml-loader.svg
-[travis-url]: https://travis-ci.org/michael-ciniawsky/posthtml-loader
+[travis]: http://img.shields.io/travis/posthtml/posthtml-loader.svg
+[travis-url]: https://travis-ci.org/posthtml/posthtml-loader
 
-[travis-dev]: http://img.shields.io/travis/michael-ciniawsky/posthtml-loader.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/michael-ciniawsky/posthtml-loader?branch=develop
+[travis-dev]: http://img.shields.io/travis/posthtml/posthtml-loader.svg?branch=develop
+[travis-dev-url]: https://travis-ci.org/posthtml/posthtml-loader?branch=develop
 
-[travis-rel-1.0.0]: https://travis-ci.org/michael-ciniawsky/posthtml-loader.svg?branch=release/1.0.0
-[travis-rel-1.0.0-url]:https://travis-ci.org/michael-ciniawsky/posthtml-loader?branch=release/1.0.0
+[travis-rel-1.0.0]: https://travis-ci.org/posthtml/posthtml-loader.svg?branch=release/1.0.0
+[travis-rel-1.0.0-url]:https://travis-ci.org/posthtml/posthtml-loader?branch=release/1.0.0
 
-[cover]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=master
-[cover-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=master
+[cover]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=master
+[cover-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=master
 
-[cover-dev]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=develop
+[cover-dev]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=develop
+[cover-dev-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=develop
 
-[cover-rel-1.0.0]: https://coveralls.io/repos/github/michael-ciniawsky/posthtml-loader/badge.svg?branch=release/1.0.0
-[cover-rel-1.0.0-url]: https://coveralls.io/github/michael-ciniawsky/posthtml-loader?branch=release/1.0.0
+[cover-rel-1.0.0]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=release/1.0.0
+[cover-rel-1.0.0-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=release/1.0.0
 
-[license]: https://img.shields.io/github/license/michael-ciniawsky/posthtml-loader.svg
-[license-url]: https://raw.githubusercontent.com/michael-ciniawsky/posthtml-loader/master/LICENSE
+[license]: https://img.shields.io/github/license/posthtml/posthtml-loader.svg
+[license-url]: https://raw.githubusercontent.com/posthtml/posthtml-loader/master/LICENSE
