@@ -11,3 +11,8 @@ npm-debug.log
 
 coverage
 node_modules
+
+lib/
+_gh-pages/
+.publish/
+*.sublime*
