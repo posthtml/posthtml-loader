@@ -32,12 +32,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michael-ciniawsky/posthtml-loader.git"
+    "url": "git+https://github.com/posthtml/posthtml-loader.git"
   },
   "bugs": {
-    "url": "https://github.com/michael-ciniawsky/posthtml-loader/issues"
+    "url": "https://github.com/posthtml/posthtml-loader/issues"
   },
   "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
-  "homepage": "https://github.com/michael-ciniawsky/posthtml-loader#readme",
+  "homepage": "https://github.com/posthtml/posthtml-loader#readme",
   "license": "MIT"
 }
