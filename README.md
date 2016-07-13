@@ -18,7 +18,7 @@ npm i html-loader posthtml-loader --save
 
 The posthtml loader must be used with at least one other loader in order to integrate with webpack correctly. For most use cases, the [html-loader](https://github.com/webpack/html-loader) is recommended. If you want to export the html string directly for use in javascript or webpack plugins, we recommend the [source-loader](https://github.com/static-dev/source-loader). Whichever loader you choose, it should be the first loader, followed by posthtml, as you will see in the examples below.
 
-Options can be passed through a `posthtml` option directly on the webpack config object. It accepts an array, an object, or a function that returns an array or object. If it's an array, it should contain plugins. If it's an object, it can contain a `defaults` key, which is an array of plugins. Any other key will apply to the `pack` querystring parameter, documented below.
+Options can be passed through a `posthtml` option directly on the webpack config object. It accepts an array, an object, or a function that returns an array or object. If it's an array, it should contain plugins. If it's an object, it can contain a `plugins` key, which is an array of plugins and an optional `parser` key which allows you to pass in a custom parser. Any other key will apply to the `pack` querystring parameter, documented below.
 
 Basic configuration example:
 
@@ -46,7 +46,7 @@ module: {
   }]
 },
 posthtml: {
-  defaults: [/* plugins that apply to all packs */],
+  plugins: [/* plugins that apply anything that's not using a pack */],
   special: [ /* plugins specific to the "special" pack */ ],
 }
 ```
@@ -65,6 +65,26 @@ module: {
 },
 posthtml: (ctx) => {
   return [examplePlugin({ filename: ctx.resourcePath })]
+}
+```
+
+### Custom Parser
+
+If you want to use a custom parser, you can pass it in under the `parser` key. Below is an example with the [sugarml parser](https://github.com/posthtml/sugarml):
+
+```js
+// webpack.config.js
+const sugarml = require('sugarml')
+
+module: {
+  loaders: [{
+    test: /\\.special\.html$/,
+    loader: 'html!posthtml?pack=special'
+  }]
+},
+posthtml: {
+  plugins: [/* posthtml plugins */],
+  parser: sugarml
 }
 ```
 
