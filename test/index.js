@@ -49,6 +49,13 @@ test('custom parser', (t) => {
   })
 })
 
+test('invalid config', (t) => {
+  return webpackCompile('custom_parser', 5)
+    .catch((err) => {
+      t.truthy(err.toString().match(/Error: Configuration must return an array or object/))
+    })
+})
+
 // Utility: compile a fixture with webpack, return results
 function webpackCompile (name, config, qs = '') {
   const testPath = path.join(fixtures, name)
