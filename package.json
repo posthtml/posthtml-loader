@@ -17,7 +17,10 @@
     "ava": "^0.15.2",
     "coveralls": "^2.11.9",
     "nyc": "^7.0.0",
-    "standard": "^7.1.2"
+    "posthtml-custom-elements": "^1.0.3",
+    "source-loader": "^0.2.0",
+    "standard": "^7.1.2",
+    "webpack": "^1.13.1"
   },
   "engine": ">=6",
   "homepage": "https://github.com/posthtml/posthtml-loader",

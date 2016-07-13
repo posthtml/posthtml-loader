@@ -14,12 +14,12 @@ module.exports = function (source) {
   if (config.parser) { processArgs.push({ parser: config.parser }) }
 
   // run posthtml
-  const ph = posthtml(config)
+  const ph = posthtml(config.plugins)
   ph.process.apply(ph, processArgs)
-    .then((result) => cb(null, result.html), cb)
+    .then((result) => cb(null, result.html), (err) => console.error(err))
 }
 
-function parseOptions (config, qs) {
+function parseOptions (config = [], qs) {
   const res = {}
 
   // if we have a function, run it
@@ -31,10 +31,13 @@ function parseOptions (config, qs) {
   }
 
   // if we now have an array, that represents the plugins directly
-  if (Array.isArray(config)) { res.plugins = config }
-
-  // if a plugin pack is being used, use it. otherwise, use default plugins
-  res.plugins = qs.pack ? config[qs.pack] : config.plugins
+  if (Array.isArray(config)) {
+    res.plugins = config
+  // if not, it's an object. if a plugin pack is being used, use it.
+  // otherwise, use default plugins
+  } else {
+    res.plugins = qs.pack ? config[qs.pack] : config.plugins
+  }
 
   // load in the custom parser if there is one
   if (config.parser) { res.parser = config.parser }
