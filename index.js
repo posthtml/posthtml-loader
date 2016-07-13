@@ -1,11 +1,4 @@
-// ------------------------------------
-// #POSTHTML - LOADER
-// ------------------------------------
-
-'use strict'
-
 var loaderUtils = require('loader-utils')
-
 var posthtml = require('posthtml')
 var postload = require('posthtml-load-plugins')
 

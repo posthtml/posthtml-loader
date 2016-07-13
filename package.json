@@ -2,44 +2,38 @@
   "name": "posthtml-loader",
   "description": "PostHTML loader for Webpack",
   "version": "0.9.1",
-  "engine": ">=4",
-  "main": "index.js",
-  "files": [
-    "index.js"
-  ],
-  "scripts": {
-    "pretest": "standard",
-    "test": "nyc ava",
-    "release:major": "",
-    "release:minor": "",
-    "release:patch": ""
+  "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/posthtml/posthtml-loader/issues"
   },
   "dependencies": {
     "loader-utils": "^0.2.12",
-    "posthtml": "^0.8.7",
-    "posthtml-load-plugins": "^0.10.0"
+    "posthtml": "^0.9.0",
+    "posthtml-load-plugins": "^0.11.8"
   },
   "devDependencies": {
     "ava": "^0.15.2",
     "coveralls": "^2.11.9",
-    "nyc": "^6.4.0",
-    "semantic-release": "^4.3.5",
+    "nyc": "^7.0.0",
     "standard": "^7.1.2"
   },
+  "engine": ">=6",
+  "homepage": "https://github.com/posthtml/posthtml-loader",
   "keywords": [
     "HTML",
+    "Loader",
     "PostHTML",
-    "Webpack",
-    "Loader"
+    "Webpack"
   ],
+  "license": "MIT",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/posthtml/posthtml-loader.git"
+    "url": "https://github.com/posthtml/posthtml-loader.git"
   },
-  "bugs": {
-    "url": "https://github.com/posthtml/posthtml-loader/issues"
-  },
-  "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
-  "homepage": "https://github.com/posthtml/posthtml-loader#readme",
-  "license": "MIT"
+  "scripts": {
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "pretest": "standard",
+    "test": "nyc ava"
+  }
 }
