@@ -4,7 +4,8 @@
   "version": "0.9.1",
   "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
   "ava": {
-    "verbose": "true"
+    "verbose": "true",
+    "serial": "true"
   },
   "bugs": {
     "url": "https://github.com/posthtml/posthtml-loader/issues"
@@ -20,7 +21,9 @@
     "posthtml-custom-elements": "^1.0.3",
     "source-loader": "^0.2.0",
     "standard": "^7.1.2",
-    "webpack": "^1.13.1"
+    "sugarml": "0.0.1",
+    "webpack": "^1.13.1",
+    "when": "^3.7.7"
   },
   "engine": ">=6",
   "homepage": "https://github.com/posthtml/posthtml-loader",
