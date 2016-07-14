@@ -1,170 +1,97 @@
-[![NPM][npm]][npm-url]
-[![Dependencies][deps]][deps-url]
-[![DevDependencies][devdeps]][devdeps-url]
+# PostHTML Loader <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+
+[![npm][npm]][npm-url]
+[![tests][travis]][travis-url]
+[![dependencies][deps]][deps-url]
+[![coverage][cover]][cover-url]
 [![Code Style][style]][style-url]
-[![License MIT][license]][license-url]
 
-[![webpack][webpack]](https://webpack.github.io) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+A PostHTML loader for webpack
 
-# Loader for [PostHTML](https://github.com/posthtml/posthtml)
+## Installation
 
-| Branch               | Build                     | Coverage                 |
-|:--------------------:|:-------------------------:|:------------------------:|
-|  Master              | ![travis]                 | ![cover]                 |
-|  Develop             | ![travis-dev]             | ![cover-dev]             |
-|  Release v1.0.0      | ![travis-rel-1.0.0]       | ![cover-rel-1.0.0]       |
-
-# Install
-
-```bash
-(sudo) npm i -D html-loader posthtml-loader
+```sh
+npm i html-loader posthtml-loader --save
 ```
 
-# Usage
-## Setup
+## Usage
+
+The posthtml loader must be used with at least one other loader in order to integrate with webpack correctly. For most use cases, the [html-loader](https://github.com/webpack/html-loader) is recommended. If you want to export the html string directly for use in javascript or webpack plugins, we recommend the [source-loader](https://github.com/static-dev/source-loader). Whichever loader you choose, it should be the first loader, followed by posthtml, as you will see in the examples below.
+
+Options can be passed through a `posthtml` option directly on the webpack config object. It accepts an array, an object, or a function that returns an array or object. If it's an array, it should contain plugins. If it's an object, it can contain a `plugins` key, which is an array of plugins and an optional `parser` key which allows you to pass in a custom parser. Any other key will apply to the `pack` querystring parameter, documented below.
+
+Basic configuration example:
 
 ```js
 // webpack.config.js
 module: {
-  loaders: [
-    {
-      test: /\.html$/,
-      loader: 'html!posthtml'
-    },
-  ]
+  loaders: [{
+    test: /\.html$/,
+    loader: 'html!posthtml'
+  }]
 },
-
-posthtml: () => {
-  return {
-    defaults: [ /* PostHTML Plugins */ ]
-  }
-}
+posthtml: [/* plugins here */]
 ```
 
-## Options
+### Plugin Packs
+
+If you need to apply different sets of plugins to different groups of files, you can use a **plugin pack**. Just add `pack=[name]` as a querystring option, and return an object from the `posthtml` config option with a key matching the pack name, and the value being an array of plugins.
 
 ```js
 // webpack.config.js
 module: {
-  loaders: [
-    {
-      test: /\.html$/,
-      loader: 'html!posthtml?pack=html'
-    }
-  ]
+  loaders: [{
+    test: /\\.special\.html$/,
+    loader: 'html!posthtml?pack=special'
+  }]
 },
-
-posthtml: () => {
-  return {
-    defaults: [],
-    html: [ /* PostHTML Plugins */ ],
-  }
+posthtml: {
+  plugins: [/* plugins that apply anything that's not using a pack */],
+  special: [ /* plugins specific to the "special" pack */ ],
 }
 ```
 
-## [Extract Text][extract-text-plugin]
+### Using a Function
+
+You can also return a function from the `posthtml` config value, if you need to for any reason. The function passes along the [loader context](https://webpack.github.io/docs/loaders.html#loader-context) as an argument, so you can get information about the file currently being processed from this and pass it to plugins if needed. For example:
 
 ```js
 // webpack.config.js
-const ExtractText = require('extract-text-webpack-plugin')
+module: {
+  loaders: [{
+    test: /\.html$/,
+    loader: 'html!posthtml'
+  }]
+},
+posthtml: (ctx) => {
+  return [examplePlugin({ filename: ctx.resourcePath })]
+}
+```
+
+### Custom Parser
+
+If you want to use a custom parser, you can pass it in under the `parser` key. Below is an example with the [sugarml parser](https://github.com/posthtml/sugarml):
+
+```js
+// webpack.config.js
+const sugarml = require('sugarml')
 
 module: {
-  loaders: [
-    {
-      test: /\.html$/,
-      loader: ExtractText.extract('html!posthtml')
-    }
-  ]
+  loaders: [{
+    test: /\\.special\.html$/,
+    loader: 'html!posthtml?pack=special'
+  }]
 },
-
-posthtml: () => {
-  return {
-    defaults: [ /* PostHTML Plugins */ ]
-  }
-},
-
-plugins: [
-  new ExtractText('[name].html')
-]
-```
-
-# Integration
-## [Template][template-html-loader] Loader
-
-```javascript
-{
-  test: /\.hbs$/,
-  loader: 'html!posthtml!template-html?engine=handlebars'
+posthtml: {
+  plugins: [/* posthtml plugins */],
+  parser: sugarml
 }
 ```
 
-## String
-### [HTML][html-loader]
+## License & Contributing
 
-```js
-{
-  test: /\.html$/,
-  loader: 'html!posthtml'
-}
-```
-
-### [SVG][svg-loader]
-
-```js
-{
-  test: /\.svg$/,
-  loader: 'svg!posthtml'
-}
-```
-
-## [File][file-loader] && [Val][val-loader] Loader
-### [HTML][html-loader]
-
-```js
-{
-  test: /\.html$/,
-  loader: 'file?name=[name].[ext]!val!html!posthtml'
-}
-```
-
-### [SVG][svg-loader]
-
-```js
-{
-  test: /\.svg$/,
-  loader: 'file?name=[name].[ext]!val!svg!posthtml'
-}
-```
-
-## [DOM](https://github.com/Wizcorp/dom-loader) Loader
-### [HTML][html-loader]
-
-```js
-
-{
-  test: /\.html$/,
-  loader: 'dom!html!posthtml'
-}
-```
-
-### [SVG][svg-loader]
-
-```js
-{
-  test: /\.svg$/,
-  loader: 'dom!svg!posthtml'
-}
-```
-
-[webpack]: https://webpack.github.io/assets/logo.png
-[extract-text-plugin]: https://github.com/webpack/extract-text-webpack-plugin
-
-[val-loader]: https://github.com/webpack/val-loader
-[dom-loader]: https://github.com/Wizcorp/dom-loader
-[svg-loader]: https://github.com/dolbyzerr/svg-loader
-[file-loader]: https://github.com/webpack/file-loader
-[html-loader]: https://github.com/webpack/html-loader
-[template-html-loader]: https://github.com/bline/jade-html-loader
+- Licensed under [MIT](LICENSE)
+- See [contributing guidelines](CONTRIBUTING.md)
 
 [npm]: https://img.shields.io/npm/v/posthtml-loader.svg
 [npm-url]: https://npmjs.com/package/posthtml-loader
@@ -181,20 +108,5 @@ plugins: [
 [travis]: http://img.shields.io/travis/posthtml/posthtml-loader.svg
 [travis-url]: https://travis-ci.org/posthtml/posthtml-loader
 
-[travis-dev]: http://img.shields.io/travis/posthtml/posthtml-loader.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/posthtml/posthtml-loader?branch=develop
-
-[travis-rel-1.0.0]: https://travis-ci.org/posthtml/posthtml-loader.svg?branch=release/1.0.0
-[travis-rel-1.0.0-url]:https://travis-ci.org/posthtml/posthtml-loader?branch=release/1.0.0
-
 [cover]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=master
 [cover-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=master
-
-[cover-dev]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=develop
-
-[cover-rel-1.0.0]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=release/1.0.0
-[cover-rel-1.0.0-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=release/1.0.0
-
-[license]: https://img.shields.io/github/license/posthtml/posthtml-loader.svg
-[license-url]: https://raw.githubusercontent.com/posthtml/posthtml-loader/master/LICENSE

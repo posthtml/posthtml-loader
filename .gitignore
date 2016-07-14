@@ -1,18 +1,4 @@
-# OS
-
 .DS_Store
-._*
-
-# NODEJS
-
 .nyc_output
-
-npm-debug.log
-
 coverage
 node_modules
-
-lib/
-_gh-pages/
-.publish/
-*.sublime*
