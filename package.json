@@ -1,7 +1,7 @@
 {
   "name": "posthtml-loader",
   "description": "PostHTML loader for Webpack",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
   "ava": {
     "verbose": "true",
