@@ -64,7 +64,7 @@ function webpackCompile (name, config, qs = '') {
   return node.call(webpack, {
     entry: { output: [path.join(testPath, 'app.js')] },
     output: { path: testPath },
-    resolveLoader: { root: path.resolve('..') },
+    resolveLoader: { root: path.resolve('../lib') },
     module: {
       loaders: [{ test: /\.html$/, loader: `source!index${qs}` }]
     },

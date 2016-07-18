@@ -1,9 +1,7 @@
 .travis.yml
 .gitignore
 .editorconfig
+.babelrc
 CONTRIBUTING.md
-npm-debug.log
-.github
-.nyc_output
 test
-coverage
+src
