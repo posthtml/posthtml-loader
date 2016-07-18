@@ -45,7 +45,7 @@
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "standard",
-    "test": "nyc ava",
+    "test": "npm run build && ava && npm run unbuild",
     "build": "mv lib src && babel src -d lib",
     "unbuild": "rm -rf lib && mv src lib"
   }
