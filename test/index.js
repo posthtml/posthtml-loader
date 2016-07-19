@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const node = require('when/node')
 const customElements = require('posthtml-custom-elements')
+const exp = require('posthtml-exp')
 const sugarml = require('sugarml')
 const fixtures = path.join(__dirname, 'fixtures')
 
@@ -51,9 +52,20 @@ test('custom parser', (t) => {
 
 test('invalid config', (t) => {
   return webpackCompile('custom_parser', 5)
-    .catch((err) => {
+    .then(() => t.fail('invalid config, no error'))
+    .catch(({outputPath, err}) => {
       t.truthy(err.toString().match(/Error: Configuration must return an array or object/))
+      fs.unlinkSync(outputPath)
     })
+})
+
+test('function called with correct context', (t) => {
+  return webpackCompile('locals', (ctx) => {
+    return [exp({ locals: { foo: ctx.resourcePath } })]
+  }).then(({outputPath, src}) => {
+    t.truthy(src.match(/test\/fixtures\/locals\/index\.html/))
+    fs.unlinkSync(outputPath)
+  })
 })
 
 // Utility: compile a fixture with webpack, return results
@@ -73,5 +85,5 @@ function webpackCompile (name, config, qs = '') {
     if (stats.compilation.errors.length) throw stats.compilation.errors
     const src = fs.readFileSync(outputPath, 'utf8')
     return {outputPath, src}
-  })
+  }).catch((err) => { throw {outputPath, err} }) // eslint-disable-line
 }
