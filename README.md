@@ -14,8 +14,6 @@ A PostHTML loader for webpack
 npm i html-loader posthtml-loader --save
 ```
 
-> **Note:** This project is compatible with node v6+ only
-
 ## Usage
 
 The posthtml loader must be used with at least one other loader in order to integrate with webpack correctly. For most use cases, the [html-loader](https://github.com/webpack/html-loader) is recommended. If you want to export the html string directly for use in javascript or webpack plugins, we recommend the [source-loader](https://github.com/static-dev/source-loader). Whichever loader you choose, it should be the first loader, followed by posthtml, as you will see in the examples below.
