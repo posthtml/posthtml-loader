@@ -2,7 +2,7 @@
   "name": "posthtml-loader",
   "description": "PostHTML loader for Webpack",
   "version": "0.10.2",
-  "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com>",
+  "author": "Jeff Escalante",
   "ava": {
     "verbose": "true",
     "serial": "true"
