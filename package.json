@@ -45,9 +45,9 @@
   },
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "pretest": "standard",
+    "pretest": "npm run unbuild && standard",
     "test": "npm run build && ava && npm run unbuild",
-    "build": "mv lib src && babel src -d lib",
-    "unbuild": "rm -rf lib && mv src lib"
+    "build": "mkdir -p src && babel lib -d src",
+    "unbuild": "rm -f src/index.js"
   }
 }
