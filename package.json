@@ -38,11 +38,10 @@
     "posthtml-exp": "^0.9.0",
     "source-loader": "^0.2.0",
     "standard": "^7.1.2",
-    "sugarml": "0.0.1",
+    "sugarml": "0.1.0",
     "webpack": "^1.13.1",
     "when": "^3.7.7"
   },
-  "engine": ">=4",
   "keywords": [
     "HTML",
     "Loader",
