@@ -1,17 +1,16 @@
-# PostHTML Loader <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+[![NPM][npm]][npm-url]
+[![Deps][deps]][deps-url]
+[![Tests][build]][build-url]
+[![Coverage][cover]][cover-url]
+[![Standard Code Style][style]][style-url]
+[![Chat][chat]][chat-badge]
 
-[![npm][npm]][npm-url]
-[![tests][travis]][travis-url]
-[![dependencies][deps]][deps-url]
-[![coverage][cover]][cover-url]
-[![Code Style][style]][style-url]
+# PostHTML Loader <img align="right" width="200" height="220" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-A PostHTML loader for webpack
-
-## Installation
+## Install
 
 ```sh
-npm i html-loader posthtml-loader --save
+npm i -D html-loader posthtml-loader
 ```
 
 ## Usage
@@ -33,7 +32,9 @@ module: {
 posthtml: [/* plugins here */]
 ```
 
-### Plugin Packs
+## Options
+
+### Plugin Packages
 
 If you need to apply different sets of plugins to different groups of files, you can use a **plugin pack**. Just add `pack=[name]` as a querystring option, and return an object from the `posthtml` config option with a key matching the pack name, and the value being an array of plugins.
 
@@ -51,6 +52,41 @@ posthtml: {
 }
 ```
 
+### Custom Parser
+
+If you want to use a custom parser, you can pass it in under the `parser` key or as query string in the loader. Below is an example with the [sugarml parser](https://github.com/posthtml/sugarml):
+
+```js
+// webpack.config.js
+const sugarml = require('sugarml')
+
+module: {
+  loaders: [{
+    test: /\\.special\.html$/,
+    loader: 'html!posthtml'
+  }]
+},
+posthtml: {
+  plugins: [/* posthtml plugins */],
+  parser: sugarml
+}
+```
+
+```js
+// webpack.config.js
+const sugarml = require('sugarml')
+
+module: {
+  loaders: [{
+    test: /\\.special\.html$/,
+    loader: 'html!posthtml?parser=sugarml'
+  }]
+},
+posthtml: {
+  plugins: [/* posthtml plugins */]
+}
+```
+
 ### Using a Function
 
 You can also return a function from the `posthtml` config value, if you need to for any reason. The function passes along the [loader context](https://webpack.github.io/docs/loaders.html#loader-context) as an argument, so you can get information about the file currently being processed from this and pass it to plugins if needed. For example:
@@ -64,34 +100,43 @@ module: {
   }]
 },
 posthtml: (ctx) => {
-  return [examplePlugin({ filename: ctx.resourcePath })]
+  return [ plugin({ filename: ctx.resourcePath })]
 }
 ```
 
-### Custom Parser
+## Maintainers
 
-If you want to use a custom parser, you can pass it in under the `parser` key. Below is an example with the [sugarml parser](https://github.com/posthtml/sugarml):
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="150 height="150"
+        src="https://avatars.githubusercontent.com/u/5419992?v=3&s=150">
+        <br />
+        <a href="https://github.com/michael-ciniawsky">Michael Ciniawsky</a>
+      </td>
+      <td align="center">
+        <img width="150 height="150"
+        src="https://avatars.githubusercontent.com/u/556932?v=3&s=150">
+        <br />
+        <a href="https://github.com/jescalan">Jeff Escalante</a>
+      </td>
+      <td align="center">
+        <img width="150" height="150" src="https://avatars.githubusercontent.com/u/2789192?v=3&s=150">
+        <br />
+        <a href="https://github.com/Gitscrum">Ivan Demidov</a>
+      </td>
+    </tr>
+  <tbody>
+</table>
 
-```js
-// webpack.config.js
-const sugarml = require('sugarml')
+## Contributing
 
-module: {
-  loaders: [{
-    test: /\\.special\.html$/,
-    loader: 'html!posthtml?pack=special'
-  }]
-},
-posthtml: {
-  plugins: [/* posthtml plugins */],
-  parser: sugarml
-}
-```
+See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [CONTRIBUTING](CONTRIBUTING.md).
 
-## License & Contributing
+## LICENSE
 
-- Licensed under [MIT](LICENSE)
-- See [contributing guidelines](CONTRIBUTING.md)
+[MIT](LICENSE)
 
 [npm]: https://img.shields.io/npm/v/posthtml-loader.svg
 [npm-url]: https://npmjs.com/package/posthtml-loader
@@ -99,14 +144,14 @@ posthtml: {
 [deps]: https://david-dm.org/posthtml/posthtml-loader.svg
 [deps-url]: https://david-dm.org/posthtml/posthtml-loader
 
-[devdeps]: https://david-dm.org/posthtml/posthtml-loader/dev-status.svg
-[devdeps-url]: https://david-dm.org/posthtml/posthtml-loader#info=devDependencies
+[build]: http://img.shields.io/travis/posthtml/posthtml-loader.svg
+[build-url]: https://travis-ci.org/posthtml/posthtml-loader
+
+[cover]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=master
+[cover-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=master
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
 
-[travis]: http://img.shields.io/travis/posthtml/posthtml-loader.svg
-[travis-url]: https://travis-ci.org/posthtml/posthtml-loader
-
-[cover]: https://coveralls.io/repos/github/posthtml/posthtml-loader/badge.svg?branch=master
-[cover-url]: https://coveralls.io/github/posthtml/posthtml-loader?branch=master
+[chat]: https://badges.gitter.im/posthtml/posthtml.svg
+[chat-badge]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
