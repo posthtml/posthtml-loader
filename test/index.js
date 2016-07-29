@@ -50,6 +50,15 @@ test('custom parser', (t) => {
   })
 })
 
+test('custom parser query', (t) => {
+  return webpackCompile('custom_parser', {
+    plugins: [customElements()]
+  }, '?parser=sugarml').then(({outputPath, src}) => {
+    t.truthy(src.match(/<div class=\\"custom\\">hello world<\/div>/))
+    fs.unlinkSync(outputPath)
+  })
+})
+
 test('invalid config', (t) => {
   return webpackCompile('custom_parser', 5)
     .then(() => t.fail('invalid config, no error'))
