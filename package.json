@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "loader-utils": "^0.2.12",
-    "posthtml": "^0.9.0"
+    "posthtml": "^0.9.1"
   },
   "devDependencies": {
     "ava": "^0.16.0",
