@@ -39,7 +39,7 @@
     "source-loader": "^0.2.0",
     "standard": "^8.4.0",
     "sugarml": "0.1.0",
-    "webpack": "^1.13.1",
+    "webpack": "^1.13.3",
     "when": "^3.7.7"
   },
   "keywords": [
