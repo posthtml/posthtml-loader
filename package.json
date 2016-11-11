@@ -31,7 +31,7 @@
     "babel-preset-stage-2": "^6.18.0",
     "conventional-changelog": "^1.1.0",
     "conventional-changelog-lint": "^1.0.0",
-    "coveralls": "^2.11.9",
+    "coveralls": "^2.11.15",
     "husky": "^0.11.5",
     "nyc": "^8.4.0",
     "posthtml-custom-elements": "^1.0.3",
