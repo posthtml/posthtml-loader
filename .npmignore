@@ -1,7 +1,18 @@
+# FILES
+
 .travis.yml
 .gitignore
 .editorconfig
-.babelrc
-CONTRIBUTING.md
+
+npm-debug.log
+
+# DIRECTORIES
+
+.github
+
+dmd
 test
-src
+jest
+coverage
+jsdoc-api
+node_modules

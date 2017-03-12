@@ -1,5 +1,14 @@
+# OS
+
 .DS_Store
-.nyc_output
-*.log
+._*
+
+# NODEJS
+
+npm-debug.log
+
+dmd
+jest
 coverage
+jsdoc-api
 node_modules
