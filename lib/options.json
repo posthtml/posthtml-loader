@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "ident": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "ctx": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "parser": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" },
+        { "instanceof": "Function" }
+      ]
+    },
+    "plugins": {
+      "oneOf": [
+        { "type": "array" },
+        { "type": "object" },
+        { "instanceof": "Function" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
