@@ -213,9 +213,9 @@ Plugins are specified under the `plugins` key in the loader options
   <tbody>
     <tr>
       <td align="center">
-        <img width="150" height="150" src="https://github.com/Gitscrum.png?v=3&s=150">
+        <img width="150" height="150" src="https://github.com/Scrum.png?v=3&s=150">
         <br />
-        <a href="https://github.com/Gitscrum">Ivan Demidov</a>
+        <a href="https://github.com/Scrum">Ivan Demidov</a>
       </td>
     </tr>
   <tbody>
