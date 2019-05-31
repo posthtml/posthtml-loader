@@ -66,7 +66,7 @@ module: {
 |**[`path`](#path)**|`{String}`|`loader.resourcePath`|PostHTML Config Path|
 |**[`ctx`](#context)**|`{Object}`|`{}`|PostHTML Config Context|
 
-If you want to use are shareable config file instead of inline options in your `webpack.config.js` create a `posthtml.config.js` file and placed it somewhere down the file tree in your project. The nearest config relative to `dirname(file)` currently processed by the loader applies. This enables **Config Cascading**. Despite some edge cases the config file will be loaded automatically and **no** additional setup is required. If you don't intend to use Config Cascading, it's recommended to place `posthtml.config.js` in the **root** `./` of your project
+If you want to use are shareable config file instead of inline options in your `webpack.config.js` create a `posthtml.config.js` file and place it somewhere down the file tree in your project. The nearest config relative to `dirname(file)` currently processed by the loader applies. This enables **Config Cascading**. Despite some edge cases the config file will be loaded automatically and **no** additional setup is required. If you don't intend to use Config Cascading, it's recommended to place `posthtml.config.js` in the **root** `./` of your project
 
 ```
 |– src
@@ -106,10 +106,10 @@ If you normally place all your config files in a separate folder e.g `./config` 
 [**posthtml.config.js**](https://github.com/posthtml/posthtml-load-config)
 ```js
 module.exports = ({ file, options, env }) => ({
-  parser: 'posthtml-sugarml'
+  parser: 'posthtml-sugarml',
   plugins: {
-    'posthtml-include': options.include
-    'posthtml-content': options.content
+    'posthtml-include': options.include,
+    'posthtml-content': options.content,
     'htmlnano': env === 'production' ? {} : false
   }
 })
@@ -122,7 +122,7 @@ module.exports = ({ file, options, env }) => ({
   options: {
     config: {
       ctx: {
-        include: {...options}
+        include: {...options},
         content: {...options}
       }
     }
