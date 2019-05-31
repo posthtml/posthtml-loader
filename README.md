@@ -38,7 +38,7 @@ module: {
           loader: 'posthtml-loader',
           options: {
             ident: 'posthtml',
-            parser: 'PostHTML Parser'
+            parser: 'PostHTML Parser',
             plugins: [
               /* PostHTML Plugins */
               require('posthtml-plugin')(options)
