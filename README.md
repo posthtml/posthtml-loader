@@ -69,14 +69,13 @@ module: {
 If you want to use are shareable config file instead of inline options in your `webpack.config.js` create a `posthtml.config.js` file and place it somewhere down the file tree in your project. The nearest config relative to `dirname(file)` currently processed by the loader applies. This enables **Config Cascading**. Despite some edge cases the config file will be loaded automatically and **no** additional setup is required. If you don't intend to use Config Cascading, it's recommended to place `posthtml.config.js` in the **root** `./` of your project
 
 ```
-|– src
-||– components
-|||– component.html
-|||– posthtml.config.js (components)
-||– index.html
-|
-|– posthtml.config.js (index)
-|– webpack.config.js
+src
+├── components
+│   ├──  component.html
+│   ├──  posthtml.config.js (components)
+├── index.html
+├── posthtml.config.js (index)
+└── webpack.config.js
 ```
 
 #### `Path`
