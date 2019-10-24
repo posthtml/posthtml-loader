@@ -5,6 +5,14 @@ const del = require('del')
 const webpack = require('webpack')
 const MemoryFS = require('memory-fs')
 
+const optimization = (config) => {
+  return {
+    splitChunks: {
+      minChunks: Infinity
+    }
+  }
+}
+
 const modules = (config) => {
   return {
     rules: config.rules
@@ -23,12 +31,7 @@ const modules = (config) => {
   }
 }
 
-const plugins = config => ([
-  new webpack.optimize.CommonsChunkPlugin({
-    names: ['runtime'],
-    minChunks: Infinity
-  })
-].concat(config.plugins || []))
+const plugins = config => ([].concat(config.plugins || []))
 
 const output = (config) => {
   return {
@@ -47,6 +50,7 @@ module.exports = function (fixture, config, options) {
     context: path.resolve(__dirname, '..', 'fixtures'),
     entry: `./${fixture}`,
     output: output(config),
+    optimization: optimization(config),
     module: modules(config),
     plugins: plugins(config)
   }
