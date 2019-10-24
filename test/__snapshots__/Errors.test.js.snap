@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Errors Validation Error 1`] = `
-"PostHTML Loader Invalid Options
-
-options.plugins should be array
-options.plugins should be object
-options.plugins should pass \\"instanceof\\" keyword validation
-options.plugins should match exactly one schema in oneOf
-"
+"Invalid options object. PostHTML Loader has been initialised using an options object that does not match the API schema.
+ - options.plugins should be one of these:
+   [any, ...] | object { … } | function
+   Details:
+    * options.plugins should be an array:
+      [any, ...]
+    * options.plugins should be an object:
+      object { … }
+    * options.plugins should be an instance of function."
 `;
