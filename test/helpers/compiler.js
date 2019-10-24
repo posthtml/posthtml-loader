@@ -10,7 +10,7 @@ const optimization = (config) => {
     splitChunks: {
       minChunks: Infinity
     }
-  };
+  }
 }
 
 const modules = (config) => {
