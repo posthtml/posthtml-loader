@@ -23,7 +23,7 @@ describe('Options', () => {
         .catch((err) => err)
     })
 
-    test.only('{Object}', () => {
+    test('{Object}', () => {
       const config = {
         loader: {
           test: /\.html$/,

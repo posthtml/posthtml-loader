@@ -50,7 +50,7 @@ describe('Options', () => {
         .catch((err) => err)
     })
 
-    test.only('{Function} - {Object}', () => {
+    test('{Function} - {Object}', () => {
       const config = {
         loader: {
           test: /\.html$/,
