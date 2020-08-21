@@ -18,20 +18,20 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "loader-utils": "^1.1.0",
-    "posthtml": "^0.12.0",
+    "loader-utils": "^2.0.0",
+    "posthtml": "^0.13.2",
     "posthtml-load-config": "^1.0.0",
     "schema-utils": "^2.5.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.7",
     "del": "^5.1.0",
-    "jest": "^24.9.0",
-    "jsdoc-to-markdown": "^5.0.2",
+    "jest": "^26.4.1",
+    "jsdoc-to-markdown": "^6.0.1",
     "memory-fs": "^0.5.0",
     "posthtml-sugarml": "1.0.0-alpha3",
     "standard": "^14.3.1",
-    "standard-version": "^8.0.1",
+    "standard-version": "^9.0.0",
     "webpack": "^4.41.2"
   },
   "keywords": [
