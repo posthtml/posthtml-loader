@@ -14,28 +14,28 @@ describe('Options', () => {
         }
       }
 
-      return webpack('options/parser/fixture.js', config)
+      return webpack('options/render/fixture.js', config)
         .then((stats) => {
-          const module = stats.toJson().modules[1]
+          const [module] = stats.toJson().modules
 
           expect(module.source).toMatchSnapshot()
         })
         .catch((err) => err)
     })
 
-    test('{Object}', () => {
+    test.only('{Object}', () => {
       const config = {
         loader: {
           test: /\.html$/,
           options: {
-            parser: require('posthtml-render')()
+            parser: require('posthtml-render')
           }
         }
       }
 
-      return webpack('options/parser/fixture.js', config)
+      return webpack('options/render/fixture.js', config)
         .then((stats) => {
-          const module = stats.toJson().modules[1]
+          const [module] = stats.toJson().modules
 
           expect(module.source).toMatchSnapshot()
         })

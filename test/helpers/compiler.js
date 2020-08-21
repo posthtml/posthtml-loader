@@ -46,6 +46,7 @@ const output = (config) => {
 
 module.exports = function (fixture, config, options) {
   config = {
+    mode: 'development',
     devtool: config.devtool || 'sourcemap',
     context: path.resolve(__dirname, '..', 'fixtures'),
     entry: `./${fixture}`,

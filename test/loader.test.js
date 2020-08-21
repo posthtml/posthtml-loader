@@ -13,7 +13,7 @@ describe('Loader', () => {
 
     return webpack('fixture.js', config)
       .then((stats) => {
-        const module = stats.toJson().modules[1]
+        const [module] = stats.toJson().modules
 
         expect(module.source).toMatchSnapshot()
       })
