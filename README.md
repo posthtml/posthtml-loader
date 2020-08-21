@@ -57,8 +57,11 @@ module: {
 |:--:|:--:|:-----:|:----------|
 |**[`config`](#config)**|`{Object}`|`undefined`|PostHTML Config|
 |**[`parser`](#parser)**|`{String/Function}`|`undefined`|PostHTML Parser|
-|**[`render`](#parser)**|`{String/Function}`|`undefined`|PostHTML Render|
+|**[`skipParse`](#skipParse)**|`{Boolean}`|`false`|PostHTML Options SkipParse|
+|**[`render`](#render)**|`{String/Function}`|`undefined`|PostHTML Render|
 |**[`plugins`](#plugins)**|`{Array/Function}`|`[]`|PostHTML Plugins|
+|**[`sync`](#sync)**|`{boolean}`|`false`|PostHTML Options Sync|
+|**[`directives`](#directives)**|`{Array<Object>}`|`[]`|PostHTML Options custom [Directives](https://github.com/posthtml/posthtml-parser#directives)|
 
 ### `Config`
 
@@ -66,6 +69,7 @@ module: {
 |:--:|:--:|:-----:|:----------|
 |**[`path`](#path)**|`{String}`|`loader.resourcePath`|PostHTML Config Path|
 |**[`ctx`](#context)**|`{Object}`|`{}`|PostHTML Config Context|
+
 
 If you want to use are shareable config file instead of inline options in your `webpack.config.js` create a `posthtml.config.js` file and place it somewhere down the file tree in your project. The nearest config relative to `dirname(file)` currently processed by the loader applies. This enables **Config Cascading**. Despite some edge cases the config file will be loaded automatically and **no** additional setup is required. If you don't intend to use Config Cascading, it's recommended to place `posthtml.config.js` in the **root** `./` of your project
 
@@ -158,6 +162,22 @@ If you want to use a custom parser e.g [SugarML](https://github.com/posthtml/sug
 }
 ```
 
+### `skipParse`
+
+If you want to use disable parsing, you can pass it in under the `skipParse` key in the loader options
+
+#### `{Boolean}`
+
+**webpack.config.js**
+```js
+{
+  loader: 'posthtml-loader',
+  options: {
+    skipParse: false
+  }
+}
+```
+
 ### `Render`
 
 If you want to use a custom render, you can pass it in under the `render` key in the loader options
@@ -216,6 +236,38 @@ Plugins are specified under the `plugins` key in the loader options
         require('posthtml-plugin')()
       ]
     }
+  }
+}
+```
+
+### `Sync`
+
+Enables sync mode, plugins will run synchronously, throws an error when used with async plugins
+
+#### `{Boolean}`
+
+**webpack.config.js**
+```js
+{
+  loader: 'posthtml-loader',
+  options: {
+    sync: true
+  }
+}
+```
+
+### `Directives`
+
+If you want to use a custom directives, you can pass it in under the `directives` key in the loader options
+
+#### `{Array}`
+
+**webpack.config.js**
+```js
+{
+  loader: 'posthtml-loader',
+  options: {
+    directives: [{name: '?php', start: '<', end: '>'}]
   }
 }
 ```

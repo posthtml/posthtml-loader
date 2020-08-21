@@ -1,6 +1,29 @@
 {
   "type": "object",
   "properties": {
+    "sync": {
+      "type": "boolean"
+    },
+    "directives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "start": {
+            "type": "string"
+          },
+          "end": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "skipParse": {
+      "type": "boolean"
+    },
     "ident": {
       "type": "string"
     },
@@ -17,6 +40,13 @@
       "additionalProperties": false
     },
     "parser": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" },
+        { "instanceof": "Function" }
+      ]
+    },
+    "render": {
       "oneOf": [
         { "type": "string" },
         { "type": "object" },
