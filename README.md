@@ -57,6 +57,7 @@ module: {
 |:--:|:--:|:-----:|:----------|
 |**[`config`](#config)**|`{Object}`|`undefined`|PostHTML Config|
 |**[`parser`](#parser)**|`{String/Function}`|`undefined`|PostHTML Parser|
+|**[`render`](#parser)**|`{String/Function}`|`undefined`|PostHTML Render|
 |**[`plugins`](#plugins)**|`{Array/Function}`|`[]`|PostHTML Plugins|
 
 ### `Config`
@@ -153,6 +154,34 @@ If you want to use a custom parser e.g [SugarML](https://github.com/posthtml/sug
   loader: 'posthtml-loader',
   options: {
     parser: require('posthtml-sugarml')()
+  }
+}
+```
+
+### `Render`
+
+If you want to use a custom render, you can pass it in under the `render` key in the loader options
+
+#### `{String}`
+
+**webpack.config.js**
+```js
+{
+  loader: 'posthtml-loader',
+  options: {
+    render: 'posthtml-you-render'
+  }
+}
+```
+
+#### `{Function}`
+
+**webpack.config.js**
+```js
+{
+  loader: 'posthtml-loader',
+  options: {
+    parser: require('posthtml-you-render')()
   }
 }
 ```
