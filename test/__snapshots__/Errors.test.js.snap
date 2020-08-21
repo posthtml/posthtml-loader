@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Errors Validation Error 1`] = `
-"Invalid options object. PostHTML Loader has been initialised using an options object that does not match the API schema.
+"Invalid options object. PostHTML Loader has been initialized using an options object that does not match the API schema.
  - options.plugins should be one of these:
    [any, ...] | object { … } | function
    Details:
