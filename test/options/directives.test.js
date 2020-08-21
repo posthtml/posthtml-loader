@@ -12,8 +12,8 @@ describe('Options', () => {
             directives: [{
               name: '?php',
               start: '<',
-              end: '>',
-          }]
+              end: '>'
+            }]
           }
         }
       }
