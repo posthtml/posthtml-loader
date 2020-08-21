@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Options config ctx - {Object} 1`] = `
+"export default \`<section>Hello</section>
+\`"
+`;
+
+exports[`Options config path - {String} 1`] = `
+"export default \`<section>Hello</section>
+\`"
+`;

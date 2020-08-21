@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Options render {Object} 1`] = `"export default \`<hello>Hello</hello>\`"`;
+
+exports[`Options render {String} 1`] = `"export default \`<hello>Hello</hello>\`"`;

@@ -19,7 +19,7 @@ describe('Options', () => {
 
       return webpack('fixture.js', config)
         .then((stats) => {
-          const module = stats.toJson().modules[1]
+          const [module] = stats.toJson().modules
 
           expect(module.source).toMatchSnapshot()
         })
@@ -43,7 +43,7 @@ describe('Options', () => {
 
       return webpack('fixture.js', config)
         .then((stats) => {
-          const module = stats.toJson().modules[1]
+          const [module] = stats.toJson().modules
 
           expect(module.source).toMatchSnapshot()
         })
@@ -65,7 +65,7 @@ describe('Options', () => {
 
       return webpack('fixture.js', config)
         .then((stats) => {
-          const module = stats.toJson().modules[1]
+          const [module] = stats.toJson().modules
 
           expect(module.source).toMatchSnapshot()
         })

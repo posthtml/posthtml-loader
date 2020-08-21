@@ -3,20 +3,18 @@
 const webpack = require('../helpers/compiler')
 
 describe('Options', () => {
-  describe('config', () => {
-    test('path - {String}', () => {
+  describe('render', () => {
+    test('{String}', () => {
       const config = {
         loader: {
           test: /\.html$/,
           options: {
-            config: {
-              path: 'test/fixtures/posthtml.config.js'
-            }
+            render: 'posthtml-render'
           }
         }
       }
 
-      return webpack('fixture.js', config)
+      return webpack('options/render/fixture.js', config)
         .then((stats) => {
           const [module] = stats.toJson().modules
 
@@ -25,20 +23,17 @@ describe('Options', () => {
         .catch((err) => err)
     })
 
-    test('ctx - {Object}', () => {
+    test('{Object}', () => {
       const config = {
         loader: {
           test: /\.html$/,
           options: {
-            config: {
-              path: 'test/fixtures/options/config/posthtml.config.js',
-              ctx: { plugin: true }
-            }
+            parser: require('posthtml-render')
           }
         }
       }
 
-      return webpack('fixture.js', config)
+      return webpack('options/render/fixture.js', config)
         .then((stats) => {
           const [module] = stats.toJson().modules
 
