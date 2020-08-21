@@ -202,15 +202,6 @@ Plugins are specified under the `plugins` key in the loader options
         <br />
         <a href="https://github.com/michael-ciniawsky">Michael Ciniawsky</a>
       </td>
-    </tr>
-  <tbody>
-</table>
-
-<h2 align="center">Contributors</h2>
-
-<table>
-  <tbody>
-    <tr>
       <td align="center">
         <img width="150" height="150" src="https://github.com/Scrum.png?v=3&s=150">
         <br />
